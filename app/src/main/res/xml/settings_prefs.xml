@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Pro Tip : Can Make Nested Preferences screens; ie, a settings inside a settings -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="show_bass"
+        android:summaryOff="Bass Hidden"
+        android:summaryOn="Bass Shown" />
+
+</PreferenceScreen>

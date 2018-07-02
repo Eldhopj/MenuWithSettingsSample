@@ -11,6 +11,7 @@
         android:title="settings"
         app:showAsAction="never"/>
 
+    <!--sub items-->
     <item android:id="@+id/item2"
         android:title="item2"
         app:showAsAction="never">
