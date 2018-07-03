@@ -10,6 +10,7 @@ package com.tharavadinnov.menusample;
  * Add dependency for settings preference
  *NOTE : we wont directly write into shared prefs its handled by the system in background
  * Implement <SharedPreferences.OnSharedPreferenceChangeListener/> on the activity which needed to be implemented (here its MainActivity)
+ * Note: EditText validation check Lesson 6:28 <https://classroom.udacity.com/courses/ud851/lessons/1392b674-18b6-4636-b36b-da7d37a319e3/concepts/7156d056-641e-491c-9b86-49f5310de0b0></https://classroom.udacity.com/courses/ud851/lessons/1392b674-18b6-4636-b36b-da7d37a319e3/concepts/7156d056-641e-491c-9b86-49f5310de0b0>
  * */
 
 import android.content.Intent;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     TextView bass;
     TextView color;
+    TextView editText;
     SharedPreferences sharedPreferences; // Global variable of sharedPrefs
 
     @Override
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         bass = findViewById(R.id.booleanBass);
         color = findViewById(R.id.colorSelection);
+        editText = findViewById(R.id.editText);
 
         showSettingsValue(); // function to retrieve values of settings
     }
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         //Setting up values on textView
         bass.setText(String.valueOf(sharedPreferences.getBoolean("show_bass", true)));
         color.setText(sharedPreferences.getString("colors", "Red"));
+        editText.setText(sharedPreferences.getString("value", "Eldho"));
 
         sharedPreferences.registerOnSharedPreferenceChangeListener(this); // registering onShared change listener
     }
@@ -93,10 +97,16 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         //when change happen in pref it will automatically update the textView
-        if (key.equals("show_bass")) {
-            bass.setText(String.valueOf(sharedPreferences.getBoolean(key, true)));
-        } else if (key.equals("colors")) {
-            color.setText(sharedPreferences.getString(key, "Red"));
+        switch (key) {
+            case "show_bass":
+                bass.setText(String.valueOf(sharedPreferences.getBoolean(key, true)));
+                break;
+            case "colors":
+                color.setText(sharedPreferences.getString(key, "Red"));
+                break;
+            case "value":
+                editText.setText(sharedPreferences.getString(key, "Eldho"));
+                break;
         }
     }
 

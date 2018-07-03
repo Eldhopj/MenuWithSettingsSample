@@ -18,4 +18,8 @@
         android:key="colors"
         android:title="Select color" />
 
+    <EditTextPreference
+        android:defaultValue="null"
+        android:key="value"
+        android:title="Enter Value" />
 </PreferenceScreen>
