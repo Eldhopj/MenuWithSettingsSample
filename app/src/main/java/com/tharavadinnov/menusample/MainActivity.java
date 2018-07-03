@@ -25,14 +25,16 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     TextView bass;
-
+    TextView color;
     SharedPreferences sharedPreferences; // Global variable of sharedPrefs
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         bass = findViewById(R.id.booleanBass);
+        color = findViewById(R.id.colorSelection);
 
         showSettingsValue(); // function to retrieve values of settings
     }
@@ -78,7 +80,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     // This function is to register the onShared change listener and to show the pref value on onCreate
     private void showSettingsValue() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        //Setting up values on textView
         bass.setText(String.valueOf(sharedPreferences.getBoolean("show_bass", true)));
+        color.setText(sharedPreferences.getString("colors", "Red"));
 
         sharedPreferences.registerOnSharedPreferenceChangeListener(this); // registering onShared change listener
     }
@@ -89,7 +93,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         //when change happen in pref it will automatically update the textView
-        bass.setText(String.valueOf(sharedPreferences.getBoolean(key, true)));
+        if (key.equals("show_bass")) {
+            bass.setText(String.valueOf(sharedPreferences.getBoolean(key, true)));
+        } else if (key.equals("colors")) {
+            color.setText(sharedPreferences.getString(key, "Red"));
+        }
     }
 
     /**

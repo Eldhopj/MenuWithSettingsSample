@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">MenuSample</string>
+
+    <!--Values, Labels and keys for List Preference-->
+    <array name="prefsLabels">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </array>
+    <array name="prefsValues">
+        <item>Red</item> <!--If other colors define in color xml and reference in here-->
+        <item>Green</item>
+        <item>Blue</item>
+    </array>
+    <array name="prefsKey">
+        <item>red</item>
+        <item>green</item>
+        <item>blue</item>
+    </array>
+    <!--Values and Labels for List Preference ends here-->
+
 </resources>

@@ -6,6 +6,16 @@
         android:defaultValue="true"
         android:key="show_bass"
         android:summaryOff="Bass Hidden"
-        android:summaryOn="Bass Shown" />
+        android:summaryOn="Bass Shown"
+        android:title="Bass" />
+
+    <!--android:entries -> The labels which we see, its an array-->
+    <!--android:entryValues -> The Values which are stored in shared pref file, its an array-->
+    <ListPreference
+        android:defaultValue="Red"
+        android:entries="@array/prefsLabels"
+        android:entryValues="@array/prefsValues"
+        android:key="colors"
+        android:title="Select color" />
 
 </PreferenceScreen>
